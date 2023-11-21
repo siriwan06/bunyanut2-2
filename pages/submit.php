@@ -4,9 +4,43 @@
     $email = $_POST['city'];   
     $email = $_POST['web'];
     $email = $_POST['role'];
-    $email = $_POST['sign1'];
-    $email = $_POST['sign2'];
-    $email = $_POST['sign3'];
+
+
+    $servername = 'localhost';
+    $username = 'root';
+    $password = "123456";
+    $dbname = "db_employee";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("". $conn->connect_error);
+    }
+
+    $sql = "INSERT INTO employee (username, password, city, webserver, role) 
+            VALUES ($email, $password, $city, $web, $role)";
+
+    $result- $conn->query($sql);
+    if ($result->num_rows > 0) {
+        $row$result->fetch_assoc();
+
+    } else{
+        echo"error".$sql."<br>".$conn->error;
+    }
+    $conn->close();
+    ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     echo 'email: '.$email.'<br>';
